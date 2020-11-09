@@ -1,0 +1,28 @@
+.illustration {
+    padding: 1rem;
+}
+
+#intro {
+    background-color: #EBE9F4;
+    padding-bottom: 3em;
+    border-radius: 0 0 35px 35px;
+}
+
+img {
+    max-width: inherit;
+}
+
+/* Small */
+@media (min-width: 476px) {
+    body {
+        width: 300px;
+    }
+}
+
+/* Medium */
+@media (min-width: 768px) {
+    body {
+        width: 450px;
+    }
+}
+

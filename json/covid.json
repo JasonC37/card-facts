@@ -1,0 +1,25 @@
+{
+    "questions": [
+    {
+        "id": "pair1",
+        "myth": "Cases are going up because we are doing more testing.",
+        "truth": "The total is rising, but the share that are positive is also rising.",
+        "source": "https://www.cbsnews.com/news/us-covid-19-cases-testing/"
+    }, {
+          "id": "pair2",
+          "myth": "Herd Immunity works in the place of lockdowns.",
+         "truth": "Many deaths will occur before this is achieved.",
+          "source": "https://www.healthcentral.com/article/herd-immunity-and-covid-19"
+    }, {
+        "id": "pair3",
+        "myth": "COVID-19 is just like the flu.",
+        "truth": "This is four to eight times as serious.",
+        "source": "https://www.cdc.gov/flu/about/burden/preliminary-in-season-estimates.html"
+    }, {
+      "id": "pair4",
+      "myth": "Once you recover, you cannot spread Covid.",
+      "truth": "After symptoms subside, you might still spread Covid for up to eight days.",
+      "source": "https://www.webmd.com/lung/news/20200403/coronavirus-hangs-around-after-symptoms-subside"
+    }
+    ]
+}

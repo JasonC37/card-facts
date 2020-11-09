@@ -1,0 +1,22 @@
+{
+    "COVID": {
+        "id": "covid",
+        "availbility": true
+    },
+    "Dogs": {
+        "id": "dog",
+        "availbility": false
+    },
+    "Presidential Powers": {
+        "id": "president",
+        "availbility": false
+    },
+    "Technology and Us": {
+        "id": "tech",
+        "availbility": false
+    },
+    "United States Elections": {
+        "id": "us-elections",
+        "availbility": false
+    }
+}

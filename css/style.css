@@ -1,0 +1,74 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+section {
+    margin-bottom: 3rem;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+header {
+    padding-bottom: 1em;
+    background-color: #f3b5ff88;
+}
+
+.navbar a {
+    padding: 0;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    margin-right: 16px;
+}
+
+.nav-link {
+    margin-right: 32px;
+    margin-left: 0;
+    font-weight: 500;
+}
+
+.nav-link-container {
+    margin-top: 1em;
+}
+
+.nav-link:hover {
+    opacity: 0.6;
+    border-bottom: 4px solid rgb(255, 177, 59);
+}
+
+.home {
+    font-size: 28px !important;
+    padding-left: 0;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.icon {
+    padding-right: 0;
+    height: 36px;
+}
+
+/* Medium */
+@media (min-width: 768px) {
+    .card .card-body img {
+        height: 80px;
+    }
+
+    .nav-links {
+        margin-top: 0;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Large */
+@media (min-width: 992px) {
+    .card .card-body img {
+        height: 100px;
+    }
+}
