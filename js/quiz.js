@@ -3,8 +3,8 @@
 let gameState = 0;
 let pairs = 0;
 let selectedCard;
-
-const covid = {questions:[{
+//let fileData = loadData("json/covid.json");
+let covid = {questions:[{
     id: "pair1",
     myth: "Cases are going up because we are doing more testing.",
     truth: "The total is rising, but the share that are positive is also rising.",
@@ -28,25 +28,21 @@ const covid = {questions:[{
 
 function makeCard(question, contentType) {
   let container = document.createElement("div");
-  container.classList.add("col-md-6", "col-lg-4", "d-flex");
+  container.classList.add("col-md-6", "col-lg-3", "d-flex");
   let card = document.createElement("div");
-  card.classList.add("card");
+  card.classList.add("card", "mb-6", question.id);
   let cardBody = document.createElement("div");
   cardBody.classList.add("card-body");
   let row = document.createElement("div");
-  row.classList.add("col-md-6");
   let col = document.createElement("div");
-  col.classList.add("col-sm", "card-content");
-  col.classList.add("card-content");
+  col.classList.add("col-sm-auto", "card-content");
   let text = document.createElement("p");
-  text.classList.add("card-text");
+  text.classList.add("card-text", "d-none");
   if(contentType=="myth") {
     text.textContent = question.myth;
   } else {
     text.textContent = question.truth;
   }
-  //text.classList.add("d-none");
-  card.classList.add(question.id);
   container.appendChild(card);
   card.appendChild(cardBody);
   cardBody.appendChild(row);
@@ -61,33 +57,40 @@ function flip() {
     hideText(this);
     if(this.classList.contains("selected")) {
       this.classList.remove("selected");
+      gameState = 0;
     } else if(gameState == 0) {
       this.classList.add("selected");
       selectedCard = this;
       gameState = 1;
     } else {
-      let id = this.classList.item(1);
+      let id;
+      this.classList.forEach(className => {
+        if(className.includes("pair")) {
+          id = className;
+        }
+      });
       selectedCard.classList.remove("selected");
+      gameState = 0;
       if(selectedCard.classList.contains(id)) {
         pairs = pairs - 1;
         this.classList.add("matched");
         selectedCard.classList.add("matched");
         if(pairs == 0) {
-          printAnswers(covid);
+          printAnswers(fileData);
         }
       } else {
-        document.querySelector("#card-container").childNodes.forEach(card => {
+        console.log("wrong");
+        document.querySelector("#card").forEach(card => {
           card.removeEventListener('click', flip);
         });
-        setTimeout(unlock, 3000);
+        setTimeout(unlock, 3000, this, selectedCard);
       }
-      gameState = 0;
     }
   }
 }
 
 function hideText(card) {
-  let text = card.firstChild.firstChild.firstChild.firstChild.firstChild;
+  let text = card.firstChild.firstChild.firstChild.firstChild;
   if(text.classList.contains("d-none")) {
     text.classList.remove("d-none");
   } else {
@@ -95,85 +98,77 @@ function hideText(card) {
   }
 }
 
-function unlock() {
+function unlock(thisCard, otherCard) {
   document.querySelector("#card-container").childNodes.forEach(card => {
     card.addEventListener('click', flip);
   });
+  thisCard.classList.remove("selected");
+  otherCard.classList.remove("selected");
+  hideText(thisCard);
+  hideText(otherCard);
 }
 
 function addCards(data) {
   let cardContainer = document.querySelector("#card-container");
-  pairs = data.length;
   let cardCollection = [];
   data.questions.forEach(cardData => {
      cardCollection.push(makeCard(cardData, "myth"));
      cardCollection.push(makeCard(cardData, "truth"));
   });
+  pairs = cardCollection.length/2;
   
-  /*let randOrder = [];
-  while (randOrder.length < pairs * 2) {
-    let position = Math.floor((Math.random() * pairs * 2) + 1);
-    if (typeof randOrder.find(position) === "undefined") {
-      randOrder.push(position);
-      console.log("DecideRand");
-    }
-  }
-  randOrder.forEach(pos => {
-    cardContainer.appendChild(cardCollection[pos]);
-    console.log("AppendCard");
-  });*/
-
+  //Randomizing Code based on https://medium.com/@fyoiza/how-to-randomize-an-array-in-javascript-8505942e452
+  let randOrder = [];
   cardCollection.forEach(card => {
+    let position = Math.floor((Math.random() * pairs * 2));
+    while (randOrder.includes(cardCollection[position])) {
+      position = Math.floor((Math.random() * pairs * 2));
+    }
+    randOrder.push(cardCollection[position]);
+  });
+  randOrder.forEach(card => {
     cardContainer.appendChild(card);
-    console.log("AppendCard");
   });
 }
 
 addCards(covid);
 
 function printAnswers(data) {
+  document.querySelector("#answers").classList.remove("d-none");
   let answerBox = document.querySelector("answers-container");
   data.questions.forEach(cardData => {
     answerBox.appendChild(makeSource(cardData));
- });
-  document.querySelector("#answers").classList.remove("d-none");
+  });
 }
 
-function makeSource() {
+printAnswers(covid);
 
+function makeSource(data) {
+  let container = document.createElement("div");
+  container.classList.add("container");
+  let myth = document.createElement("p");
+  myth.textContent = "Myth: " + data.myth;
+  let truth = document.createElement("p");
+  truth.textContent = "Truth: " + data.truth;
+  let sourceLink = document.createElement("p");
+  sourceLink.textContent = "Source: " + data.source;
+  container.appendChild(myth);
+  container.appendChild(truth);
+  container.appendChild(sourceLink);
+  return div;
 }
 
-//Define a function `renderSearchResults()` that takes in an object with a
-//`results` property containing an array of music tracks; the same format as
-//the above `EXAMPLE_SEARCH_RESULTS` variable.
-//The function should render each item in the argument's `results` array into 
-//the DOM by calling the `renderTrack()` function you just defined. Be sure to 
-//"clear" the previously displayed results first!
-//
-//You can test this function by passing it the `EXAMPLE_SEARCH_RESULTS` object.
-function renderSearchResults(searchResults) {
-  if(searchResults.results.length == 0) {
-    renderError(new Error("No results found"));
-  } else {
-    document.querySelector("#records").innerHTML = "";
-    searchResults.results.forEach(renderTrack);
-  }
-}
-
-
-const URL_TEMPLATE = "https://itunes.apple.com/search?limit=25&term={searchTerm}";
-function fetchTrackList(term) {
-  toggleSpinner();
-  let promise = fetch(URL_TEMPLATE.replace("{searchTerm}", term))
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(data) {
-      renderSearchResults(data);
-    })
-    .catch(function(error){
-      renderError(error);
-    })
-    .then(toggleSpinner);
-    return promise;
+function loadData() {
+  let promise = fetch("json/covid.json")
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    addCards(data);
+  })
+  .catch(function(error){
+    console.log(error);
+    alert("A fatal error has occurred, please reload the page and try again later.");
+  });
+  return promise;
 }

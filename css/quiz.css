@@ -20,6 +20,11 @@
     box-shadow: 4px 8px 8px	rgba(255, 177, 59, 0.25);
 }
 
+.card.selected:hover {
+    box-shadow: 8px 16px 16px rgba(255, 177, 59, 0.25);
+}
+
+
 .card, footer {
     text-align: center;
 }
@@ -38,8 +43,4 @@
 
 .card .card-content {
     padding: 1.25rem 2.25rem;
-}
-
-.small-icon {
-    height: 16px;
 }
