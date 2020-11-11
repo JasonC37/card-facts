@@ -3,24 +3,22 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="author" content="Jason and Yashasvi">
-    <title>Factual Fact Flipper</title>
-    <meta name="description" content="A concentration game of truths and hot-button issues.">
+    <meta name="author" content="Jason Chin">
+    <title>Myth Matcher</title>
+    <meta name="description" content="A matching game of truths and hot-button issues.">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="icon" href="img/grid-icon.png" type="image/x-icon">
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index.css">
-
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script> 
     <script src="https://d3js.org/d3-dsv.v1.min.js"></script>
     <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
-    <script src="jquery-1.12.4.min.js"></script>
 </head>
 
 <body>
@@ -28,52 +26,49 @@
         <nav class="navbar">
             <div class="container">
                 <div class="d-flex flex-row align-items-center justify-content-start">
-                    <a href="/index"><img class="icon" src="img/grid-icon.png" alt="briefcase emoji"></a>
-                    <a class="home" href="/index">Factual Fact Flipper</a>
+                    <a href="/index.html"><img class="icon" src="img/grid-icon.png" alt="grid icon"></a>
+                    <a class="home" href="/index.html">Myth Matcher</a>
                 </div>
                 <div class="nav-link-container d-flex align-content-center flex-wrap justify-content-end">
-                    <a class="nav-link" href="/index">Other Quizzes</a>
+                    <a class="nav-link" href="/index.html">Other Quizzes</a>
                     <a class="nav-link">About</a>
                 </div>
             </div>
         </nav>
     </header>
-    <section>
-        <section id="instructions">
-            <div class="container">
-                <h1>What is this?</h1>
-                <div class="d-flex justify-content-between">
-                    <p>
-                        A classic game of concentration, pair every myth together with its truth. Flip over each card
-                        until you pair them all. Finish all of them to figure out what is the truth and where to
-                        learn more or why it is true.
-                    </p>
-                </div>
-            </div>
-        </section>
+    <section id="instructions">
         <div class="container">
-            
-            <!-- The search form -->
+            <h1>What is this?</h1>
+            <div class="d-flex justify-content-between">
+                <p>
+                    A fun little matching quiz, pair every myth together with its truth. Try to match each card
+                    until you pair them all. Finish all of them to figure out what is the truth and where to
+                    learn more or why it is true. We are adding new quizzes so stay tuned for more.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
             <form class="form-inline" method="GET" action="https://itunes.apple.com/search">
                 <div class="form-group mr-3">
                     <label for="searchQuery" class="mr-2">What do you want to hear?</label>
                     <input type="text" name="term" id="searchQuery" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-primary">
-                    <i class="fa fa-music" aria-hidden="true"></i> Search!
+                    <i class="fa" aria-hidden="true"></i> Search
                 </button>
-                <input type="hidden" name="entity" value="song"> <!-- extra form param -->
+                <i class="d-none fa fa-spinner fa-spin" aria-hidden="true"></i>
             </form>
-    
-            <!-- Results to show -->
-            <div id="results">
-            <!-- data will be added here -->
+
+            <div id="result">
+            <!-- Search Results Here -->
             </div>
         </div>
     </section>
     <footer>
         <div class="container">
-            <p>&copy; 2020 Factual Fact Flipper. All Rights Reserved.</p>
+            <p>&copy; 2020 Myth Matcher. All Rights Reserved.</p>
             <p>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
         </div>
     </footer>

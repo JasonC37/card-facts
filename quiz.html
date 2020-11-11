@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Jason Chin">
-    <title>Factual Fact Flipper</title>
-    <meta name="description" content="A concentration game of truths and hot-button issues.">
+    <title>Myth Matcher</title>
+    <meta name="description" content="A matching game of truths and hot-button issues.">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="icon" href="img/grid-icon.png" type="image/x-icon">
@@ -13,7 +13,7 @@
     
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/quiz.css">
-
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script> 
@@ -26,11 +26,11 @@
         <nav class="navbar">
             <div class="container">
                 <div class="d-flex flex-row align-items-center justify-content-start">
-                    <a href="/index"><img class="icon" src="img/grid-icon.png" alt="grid icon"></a>
-                    <a class="home" href="/index">Factual Fact Flipper</a>
+                    <a href="/index.html"><img class="icon" src="img/grid-icon.png" alt="grid icon"></a>
+                    <a class="home" href="/index.html">Myth Matcher</a>
                 </div>
                 <div class="nav-link-container d-flex align-content-center flex-wrap justify-content-end">
-                    <a class="nav-link" href="/index">Other Quizzes</a>
+                    <a class="nav-link" href="/index.html">Other Quizzes</a>
                     <a class="nav-link">About</a>
                 </div>
             </div>
@@ -42,9 +42,9 @@
             <h1>What is this?</h1>
             <div class="d-flex justify-content-between">
                 <p>
-                    A classic game of concentration, pair every myth together with its truth. Flip over each card
+                    A fun little matching quiz, pair every myth together with its truth. Try to match each card
                     until you pair them all. Finish all of them to figure out what is the truth and where to
-                    learn more or why it is true.
+                    learn more or why it is true. We are adding new quizzes so stay tuned for more.
                 </p>
             </div>
         </div>
@@ -53,6 +53,7 @@
     <section id="game">
         <div class="container">
             <h1>Match!</h1>
+            <i class="d-none fa fa-spinner fa-spin" aria-hidden="true"></i>
             <div id="card-container" class="row">
                 <!--Populate with js--> 
             </div>
@@ -61,13 +62,15 @@
 
     <section id="answers" class="d-none container">
         <h1>Answers:</h1>
-        <div id="answers-container" class="container">
-            <!--Populate with js--> 
+        <div class="container">
+            <ol id="answers-list">
+            <!--Populate with js-->
+            </ol>
         </div>
     </section>
     <footer>
         <div class="container">
-            <p>&copy; 2020 Factual Fact Flipper. All Rights Reserved.</p>
+            <p>&copy; 2020 Myth Matcher. All Rights Reserved.</p>
             <p>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
         </div>
     </footer>

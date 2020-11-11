@@ -8,6 +8,10 @@
     vertical-align: middle;
 }
 
+li {
+    margin-bottom: 2em;
+}
+
 .card p {
     width: inherit;
 }

@@ -3,7 +3,7 @@
 let gameState = 0;
 let pairs = 0;
 let selectedCard;
-//let fileData = loadData("json/covid.json");
+let fileData = loadData("covid.json");
 let covid = {questions:[{
     id: "pair1",
     myth: "Cases are going up because we are doing more testing.",
@@ -37,7 +37,7 @@ function makeCard(question, contentType) {
   let col = document.createElement("div");
   col.classList.add("col-sm-auto", "card-content");
   let text = document.createElement("p");
-  text.classList.add("card-text", "d-none");
+  //text.classList.add("card-text", "d-none");
   if(contentType=="myth") {
     text.textContent = question.myth;
   } else {
@@ -54,15 +54,11 @@ function makeCard(question, contentType) {
 
 function flip() {
   if(!this.classList.contains("matched")) {
-    hideText(this);
+    //hideText(this);
     if(this.classList.contains("selected")) {
       this.classList.remove("selected");
       gameState = 0;
-    } else if(gameState == 0) {
-      this.classList.add("selected");
-      selectedCard = this;
-      gameState = 1;
-    } else {
+    } else if(gameState == 1) {
       let id;
       this.classList.forEach(className => {
         if(className.includes("pair")) {
@@ -76,19 +72,23 @@ function flip() {
         this.classList.add("matched");
         selectedCard.classList.add("matched");
         if(pairs == 0) {
-          printAnswers(fileData);
+          document.querySelector("#answers").classList.remove("d-none");
         }
-      } else {
-        console.log("wrong");
+      } /* else {
         document.querySelector("#card").forEach(card => {
           card.removeEventListener('click', flip);
         });
         setTimeout(unlock, 3000, this, selectedCard);
-      }
+      } */
+    } else {
+      this.classList.add("selected");
+      selectedCard = this;
+      gameState = 1;      
     }
   }
 }
 
+/*
 function hideText(card) {
   let text = card.firstChild.firstChild.firstChild.firstChild;
   if(text.classList.contains("d-none")) {
@@ -106,7 +106,7 @@ function unlock(thisCard, otherCard) {
   otherCard.classList.remove("selected");
   hideText(thisCard);
   hideText(otherCard);
-}
+} */
 
 function addCards(data) {
   let cardContainer = document.querySelector("#card-container");
@@ -131,44 +131,52 @@ function addCards(data) {
   });
 }
 
-addCards(covid);
-
 function printAnswers(data) {
-  document.querySelector("#answers").classList.remove("d-none");
-  let answerBox = document.querySelector("answers-container");
+  let answerBox = document.querySelector("#answers-list");
+  let answerDiv = [];
   data.questions.forEach(cardData => {
-    answerBox.appendChild(makeSource(cardData));
+    answerDiv.push(makeSource(cardData));
+  });
+  answerDiv.forEach(answer => {
+    answerBox.appendChild(answer);
   });
 }
 
-printAnswers(covid);
-
 function makeSource(data) {
-  let container = document.createElement("div");
+  let container = document.createElement("li");
   container.classList.add("container");
   let myth = document.createElement("p");
   myth.textContent = "Myth: " + data.myth;
   let truth = document.createElement("p");
   truth.textContent = "Truth: " + data.truth;
-  let sourceLink = document.createElement("p");
-  sourceLink.textContent = "Source: " + data.source;
+  let sourceLink = document.createElement("a");
+  sourceLink.href = data.source;
+  sourceLink.target = "_blank"
+  sourceLink.textContent = "(Source)";
   container.appendChild(myth);
   container.appendChild(truth);
   container.appendChild(sourceLink);
-  return div;
+  return container;
 }
 
-function loadData() {
-  let promise = fetch("json/covid.json")
+function loadData(source) {
+  toggleSpinner();
+  let promise = fetch(source)
   .then(function(response) {
     return response.json();
   })
   .then(function(data) {
     addCards(data);
+    printAnswers(data);
   })
-  .catch(function(error){
+  .catch(function(error) {
     console.log(error);
-    alert("A fatal error has occurred, please reload the page and try again later.");
-  });
+    alert("A data error has occurred, please reload the page and try again later.");
+  })
+  .then(toggleSpinner);
   return promise;
+}
+
+function toggleSpinner() {
+  document.querySelector(".fa-spinner").classList.toggle("d-none");
 }

@@ -2,6 +2,10 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+body, footer {
+    background-color: rgb(240, 240, 240);
+}
+
 section {
     margin-bottom: 3rem;
 }
