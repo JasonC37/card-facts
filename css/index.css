@@ -2,13 +2,6 @@ form {
     margin-bottom: 1em;
 }
 
-footer {
-    bottom: 0;
-    margin: auto;
-    width: 100%;
-    position: fixed;
-}
-
 .title {
     font-weight: bold;
 }
