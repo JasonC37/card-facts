@@ -1,9 +1,10 @@
 body {
     font-family: 'Montserrat', sans-serif;
+    background-color: rgb(240, 240, 240);
 }
 
-body, footer {
-    background-color: rgb(240, 240, 240);
+footer {
+    background-color:rgb(241, 209, 248);
 }
 
 section {
@@ -53,6 +54,51 @@ header {
 .icon {
     padding-right: 0;
     height: 36px;
+}
+
+.card {
+    border-radius: 25px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    margin: 1rem 0 1rem 0;
+    vertical-align: middle;
+}
+
+.card p {
+    width: inherit;
+}
+
+.card.matched {
+    box-shadow: 4px 8px 8px	rgba(0, 100, 0, 0.25);
+}
+
+.card.selected {
+    box-shadow: 4px 8px 8px	rgba(255, 177, 59, 0.25);
+}
+
+.card.selected:hover {
+    box-shadow: 8px 16px 16px rgba(255, 177, 59, 0.25);
+}
+
+
+.card, footer {
+    text-align: center;
+}
+
+.card:hover {
+    box-shadow: 8px 16px 16px rgba(0, 0, 0, 0.25);
+}
+
+.card.matched:hover {
+    box-shadow: 8px 16px 16px rgba(0, 100, 0, 0.25);
+}
+
+.card .card-body {
+    padding: 0;
+}
+
+.card .card-content {
+    padding: 1.25rem 2.25rem;
 }
 
 /* Medium */

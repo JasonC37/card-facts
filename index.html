@@ -43,8 +43,15 @@
                 <p>
                     A fun little matching quiz, pair every myth together with its truth. Try to match each card
                     until you pair them all. Finish all of them to figure out what is the truth and where to
-                    learn more or why it is true. We are adding new quizzes so stay tuned for more.
+                    learn more or why it is true. We are adding new quizzes so stay tuned for more. Type "All"
+                    to browse all quizzes.
                 </p>
+            </div>
+            <h2>Featured Quiz:</h2>
+            <div class="d-flex justify-content-between container">
+                <div id="featured" class="row">
+                    <!-- Featured Quizzes Here -->
+                </div>
             </div>
         </div>
     </section>
@@ -52,7 +59,7 @@
         <div class="container">
             <form class="form-inline" method="GET" action="https://itunes.apple.com/search">
                 <div class="form-group mr-3">
-                    <label for="searchQuery" class="mr-2">What do you want to hear?</label>
+                    <label for="searchQuery" class="mr-2">Search Quizzes:</label>
                     <input type="text" name="term" id="searchQuery" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-primary">
@@ -61,8 +68,8 @@
                 <i class="d-none fa fa-spinner fa-spin" aria-hidden="true"></i>
             </form>
 
-            <div id="result">
-            <!-- Search Results Here -->
+            <div id="result" class="row">
+                <!-- Search Results Here -->
             </div>
         </div>
     </section>

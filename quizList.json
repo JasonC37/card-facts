@@ -1,22 +1,33 @@
 {
-    "COVID": {
+    "quizzes": [{
         "id": "covid",
-        "availbility": true
-    },
-    "Dogs": {
+        "name": "COVID",
+        "description": "Test your knowledge of Covid-19. From spread to symptoms, how much do you really know?",
+        "availability": true
+    }, {
+        "id": "climate",
+        "name": "Climate Change",
+        "description": "Climate change is drastically changing our world, but how much are we contributing to it?",
+        "availability": false   
+    }, {
         "id": "dog",
-        "availbility": false
-    },
-    "Presidential Powers": {
-        "id": "president",
-        "availbility": false
-    },
-    "Technology and Us": {
+        "name": "Dogs",
+        "description": "Man's best friend, but there are so many things that make dogs special from other animals. Learn some fun facts about dogs in this quiz.",
+        "availability": false
+    }, {
+        "id": "us-president",
+        "name": "US Presidents",
+        "description": "Match US Presidents with a certain fact (or fiction?) about them.",
+        "availability": false
+    }, {
         "id": "tech",
-        "availbility": false
-    },
-    "United States Elections": {
+        "name": "Technology and Us",
+        "description": "Everybody is on the internet. Most folks have social media, but how does technology change us?",
+        "availability": false
+    }, {
         "id": "us-elections",
-        "availbility": false
-    }
+        "name": "United States Elections",
+        "description": "It's that time again, test your knowledge of one of the most complicated elections in the world.",
+        "availability": false
+    }]
 }
