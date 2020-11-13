@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 let gameState = 0;
 let pairs = 0;
@@ -27,7 +27,7 @@ function makeCard(question, contentType) {
   cardBody.appendChild(row);
   row.appendChild(col);
   col.appendChild(text);
-  card.addEventListener('click', flip);
+  card.addEventListener("click", flip);
   return container;
 }
 
@@ -62,7 +62,7 @@ function flip() {
     } else {
       this.classList.add("selected");
       selectedCard = this;
-      gameState = 1;      
+      gameState = 1;
     }
   }
 }
@@ -149,7 +149,6 @@ function loadData(source) {
     printAnswers(data);
   })
   .catch(function(error) {
-    console.log(error);
     alert("A data error has occurred, please reload the page and try again later.");
   })
   .then(toggleSpinner);

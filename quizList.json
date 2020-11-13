@@ -15,11 +15,6 @@
         "description": "Man's best friend, but there are so many things that make dogs special from other animals. Learn some fun facts about dogs in this quiz.",
         "availability": false
     }, {
-        "id": "us-president",
-        "name": "US Presidents",
-        "description": "Match US Presidents with a certain fact (or fiction?) about them.",
-        "availability": false
-    }, {
         "id": "tech",
         "name": "Technology and Us",
         "description": "Everybody is on the internet. Most folks have social media, but how does technology change us?",
@@ -28,6 +23,11 @@
         "id": "us-elections",
         "name": "United States Elections",
         "description": "It's that time again, test your knowledge of one of the most complicated elections in the world.",
+        "availability": false
+    }, {
+        "id": "us-president",
+        "name": "US Presidents",
+        "description": "Match US Presidents with a certain fact (or fiction?) about them.",
         "availability": false
     }]
 }

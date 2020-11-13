@@ -1,4 +1,9 @@
-'use strict';
+"use strict";
+
+const noResultData = {
+  name: "",
+  description: "No Results Found"
+};
 
 function makeCard(quizData) {
   let container = document.createElement("div");
@@ -11,9 +16,9 @@ function makeCard(quizData) {
   row.classList.add("row");
   let col = document.createElement("div");
   col.classList.add("col-sm-auto", "card-content");
-  let title = document.createElement("h2");
-  //title.classList.add("card-title");
-  title.textcontent = quizData.name;
+  let title = document.createElement("h3");
+  title.classList.add("card-title");
+  title.appendChild(document.createTextNode(quizData.name));
   let text = document.createElement("p");
   text.classList.add("card-text");
   text.textContent = quizData.description;
@@ -29,10 +34,11 @@ function makeCard(quizData) {
     btn.classList.add("btn", "btn-dark");
     btn.textContent = "Play";
     col.appendChild(btn);
-  } else {
+  } else if(quizData.availability == false){
     let coming = document.createElement("p");
     coming.classList.add("card-text");
     coming.textContent = "Coming Soon!";
+    coming.classList.add("font-weight-bold");
     col.appendChild(coming);
   }
   return container;
@@ -50,7 +56,6 @@ function fetchFeatured() {
       document.querySelector("#featured").appendChild(makeCard(data.quizzes[0]));
     })
     .catch(function(error){
-      console.log(error);
       alert("A data error has occurred, please reload the page and try again later.");
     })
     .then(toggleSpinner);
@@ -67,14 +72,20 @@ function fetchList(search) {
       return response.json();
     })
     .then(function(data) {
-      data.quizzes.forEach(entry => {
+      let cardsAdded = 0;
+      data.quizzes.forEach((entry) => {
         if(entry.name.toLowerCase().includes(term) || term == "all") {
           resultBox.appendChild(makeCard(entry));
+          cardsAdded = cardsAdded + 1;
         }
       });
+      if(cardsAdded == 0) {
+        let noResult = document.createElement("p");
+        noResult.textContent = "No Results Found";
+        resultBox.appendChild(makeCard(noResultData));
+      }
     })
     .catch(function(error){
-      console.log(error);
       alert("A data error has occurred, please reload the page and try again later.");
     })
     .then(toggleSpinner);
