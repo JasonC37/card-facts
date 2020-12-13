@@ -67,11 +67,9 @@ function fetchList(search) {
       return response.json();
     })
     .then(function(data) {
-      let i = 0;
       data.quizzes.forEach((entry) => {
         if(entry.name.toLowerCase().includes(term) || term == "all") {
           resultBox.appendChild(makeCard(entry));
-          i = 1;
         }
       });
     })
