@@ -1,7 +1,7 @@
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: rgb(240, 240, 240);
-    margin-bottom: 8%;
+    margin-bottom: 15%;
 }
 
 form {
@@ -109,6 +109,7 @@ header {
 
 #gameMessage {
     text-align: center;
+    padding: 8px;
 }
 
 .card, footer {
@@ -159,6 +160,10 @@ header {
     h1 {
         font-size: 2.5rem;
     }
+
+    body {
+        margin-bottom: 10%;
+    }
 }
 
 /* Large */
@@ -170,5 +175,9 @@ header {
 
     #featured .card, .searchCard {
         min-width: 550px;
+    }
+
+    body {
+        margin-bottom: 8%;
     }
 }
