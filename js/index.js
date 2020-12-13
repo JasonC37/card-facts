@@ -2,7 +2,7 @@
 
 function makeCard(quizData) {
   let container = document.createElement("div");
-  container.classList.add("col-md-6", "col-lg-3", "d-flex");
+  container.classList.add("col-md-4", "col-lg-3", "col-6", "d-flex");
   let card = document.createElement("div");
   card.classList.add("card", "mb-6");
   let cardBody = document.createElement("div");
@@ -67,9 +67,11 @@ function fetchList(search) {
       return response.json();
     })
     .then(function(data) {
-      data.quizzes.forEach(entry => {
+      let i = 0;
+      data.quizzes.forEach((entry) => {
         if(entry.name.toLowerCase().includes(term) || term == "all") {
           resultBox.appendChild(makeCard(entry));
+          i = 1;
         }
       });
     })

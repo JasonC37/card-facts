@@ -3,11 +3,11 @@
 let gameState = 0;
 let pairs = 0;
 let selectedCard;
-let fileData = loadData("covid.json");
+loadData("covid.json");
 
 function makeCard(question, contentType) {
   let container = document.createElement("div");
-  container.classList.add("col-md-6", "col-lg-3", "d-flex");
+  container.classList.add("col-md-4", "col-lg-3", "col-6", "d-flex");
   let card = document.createElement("div");
   card.classList.add("card", "mb-6", question.id);
   let cardBody = document.createElement("div");
@@ -27,19 +27,20 @@ function makeCard(question, contentType) {
   cardBody.appendChild(row);
   row.appendChild(col);
   col.appendChild(text);
-  card.addEventListener('click', flip);
+  card.addEventListener("click", flip);
   return container;
 }
 
 function flip() {
   if(!this.classList.contains("matched")) {
     //hideText(this);
+    let messageBar = document.querySelector("#gameMessage");
     if(this.classList.contains("selected")) {
       this.classList.remove("selected");
       gameState = 0;
     } else if(gameState == 1) {
       let id;
-      this.classList.forEach(className => {
+      this.classList.forEach((className) => {
         if(className.includes("pair")) {
           id = className;
         }
@@ -50,19 +51,17 @@ function flip() {
         pairs = pairs - 1;
         this.classList.add("matched");
         selectedCard.classList.add("matched");
+        messageBar.textContent = "Matched!";
         if(pairs == 0) {
           document.querySelector("#answers").classList.remove("d-none");
         }
-      } /* else {
-        document.querySelector("#card").forEach(card => {
-          card.removeEventListener('click', flip);
-        });
-        setTimeout(unlock, 3000, this, selectedCard);
-      } */
+      } else {
+        messageBar.textContent = "That was incorrect...";
+      }
     } else {
       this.classList.add("selected");
       selectedCard = this;
-      gameState = 1;      
+      gameState = 1;
     }
   }
 }
@@ -98,12 +97,14 @@ function addCards(data) {
   
   //Randomizing Code based on https://medium.com/@fyoiza/how-to-randomize-an-array-in-javascript-8505942e452
   let randOrder = [];
-  cardCollection.forEach(card => {
+  let cardList = [];
+  cardCollection.forEach((card) => {
     let position = Math.floor((Math.random() * pairs * 2));
     while (randOrder.includes(cardCollection[position])) {
       position = Math.floor((Math.random() * pairs * 2));
     }
     randOrder.push(cardCollection[position]);
+    cardList.push(card);
   });
   randOrder.forEach(card => {
     cardContainer.appendChild(card);

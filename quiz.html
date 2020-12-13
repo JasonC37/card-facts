@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/quiz.css">
+    <!--<link rel="stylesheet" href="css/quiz.css">-->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
@@ -26,11 +26,11 @@
         <nav class="navbar">
             <div class="container">
                 <div class="d-flex flex-row align-items-center justify-content-start">
-                    <a href="/index.html"><img class="icon" src="img/grid-icon.png" alt="grid icon"></a>
-                    <a class="home" href="/index.html">Myth Matcher</a>
+                    <a href="/"><img class="icon" src="img/grid-icon.png" alt="grid icon"></a>
+                    <a class="home" href="/">Myth Matcher</a>
                 </div>
                 <div class="nav-link-container d-flex align-content-center flex-wrap justify-content-end">
-                    <a class="nav-link" href="/index.html">Other Quizzes</a>
+                    <a class="nav-link" href="/">Other Quizzes</a>
                     <a class="nav-link">About</a>
                 </div>
             </div>
@@ -44,8 +44,12 @@
                 <p>
                     A fun little matching quiz, pair every myth together with its truth. Try to match each card
                     until you pair them all. Finish all of them to figure out what is the truth and where to
-                    learn more or why it is true. We are adding new quizzes so stay tuned for more.
+                    learn more or why it is true. When you get it right, the cards will turn greem. Just in case,
+                    we'll tell you if you're right or wrong below too. Good Luck!
                 </p>
+            </div>
+            <div id="gameMsgContainer">
+                <p id="gameMessage">Start Matching Below!</p>
             </div>
         </div>
     </section>

@@ -1,10 +1,27 @@
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: rgb(240, 240, 240);
+    margin-bottom: 8%;
+}
+
+form {
+    margin-bottom: 1em;
+}
+
+.title {
+    font-weight: bold;
+}
+
+li {
+    margin-bottom: 2em;
 }
 
 footer {
     background-color:rgb(241, 209, 248);
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    position: fixed;
 }
 
 section {
@@ -57,6 +74,8 @@ header {
 }
 
 .card {
+    height: auto;
+
     border-radius: 25px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.25);
     overflow: hidden;
@@ -80,6 +99,17 @@ header {
     box-shadow: 8px 16px 16px rgba(255, 177, 59, 0.25);
 }
 
+#gameMsgContainer {
+    background-color:rgb(241, 209, 248);
+    width: 30%;
+    margin: auto;
+    border-radius: 25px;
+    font-size: 120%;
+}
+
+#gameMessage {
+    text-align: center;
+}
 
 .card, footer {
     text-align: center;
@@ -101,10 +131,25 @@ header {
     padding: 1.25rem 2.25rem;
 }
 
+
+#card-container .card {
+    height: 15em;
+    width: 12em;
+}
+
+#featured .card, .searchCard {
+    min-width: 300px;
+}
+
 /* Medium */
 @media (min-width: 768px) {
-    .card .card-body img {
-        height: 80px;
+    #card-container .card {
+        height: 12em;
+        width: 15em;
+    }
+
+    #featured .card, .searchCard {
+        min-width: 500px;
     }
 
     .nav-links {
@@ -118,7 +163,12 @@ header {
 
 /* Large */
 @media (min-width: 992px) {
-    .card .card-body img {
-        height: 100px;
+    #card-container .card {
+        height: 12em;
+        width: 20em;
+    }
+
+    #featured .card, .searchCard {
+        min-width: 550px;
     }
 }

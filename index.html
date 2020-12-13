@@ -12,7 +12,7 @@
     <link rel="icon" href="img/grid-icon.png" type="image/x-icon">
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index.css">
+    <!--<link rel="stylesheet" href="css/index.css">-->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
@@ -26,11 +26,11 @@
         <nav class="navbar">
             <div class="container">
                 <div class="d-flex flex-row align-items-center justify-content-start">
-                    <a href="/index.html"><img class="icon" src="img/grid-icon.png" alt="grid icon"></a>
-                    <a class="home" href="/index.html">Myth Matcher</a>
+                    <a href="/"><img class="icon" src="img/grid-icon.png" alt="grid icon"></a>
+                    <a class="home" href="/">Myth Matcher</a>
                 </div>
                 <div class="nav-link-container d-flex align-content-center flex-wrap justify-content-end">
-                    <a class="nav-link" href="/index.html">Other Quizzes</a>
+                    <a class="nav-link" href="/">Other Quizzes</a>
                     <a class="nav-link">About</a>
                 </div>
             </div>
@@ -39,20 +39,14 @@
     <section id="instructions">
         <div class="container">
             <h1>What is this?</h1>
-            <div class="d-flex justify-content-between">
                 <p>
                     A fun little matching quiz, pair every myth together with its truth. Try to match each card
                     until you pair them all. Finish all of them to figure out what is the truth and where to
-                    learn more or why it is true. We are adding new quizzes so stay tuned for more. Type "All"
-                    to browse all quizzes.
+                    learn more or why it is true. We are adding new quizzes so stay tuned for more. 
                 </p>
-            </div>
-            <h2>Featured Quiz:</h2>
-            <div class="d-flex justify-content-between container">
-                <div id="featured" class="row">
-                    <!-- Featured Quizzes Here -->
-                </div>
-            </div>
+                <p>
+                    Type "All" to browse all quizzes.
+                </p>
         </div>
     </section>
     <section>
@@ -60,16 +54,35 @@
             <form class="form-inline" method="GET" action="https://itunes.apple.com/search">
                 <div class="form-group mr-3">
                     <label for="searchQuery" class="mr-2">Search Quizzes:</label>
-                    <input type="text" name="term" id="searchQuery" class="form-control">
+                    <input type="text" name="term" id="searchQuery" aria-label="Search Quizzes" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-primary">
                     <i class="fa" aria-hidden="true"></i> Search
                 </button>
                 <i class="d-none fa fa-spinner fa-spin" aria-hidden="true"></i>
             </form>
-
+            <div id="featuredQuiz" class="row">
+                <h2>Featured Quiz:</h2>
+                <div class="d-flex justify-content-between container">
+                    <div id="featured" class="row">
+                        <!-- Featured Quizzes Here -->
+                    </div>
+                </div>
+            </div>
+            <h2>Search Results:</h2>
             <div id="result" class="row">
                 <!-- Search Results Here -->
+                <div class="col-md-6 col-lg-3 d-flex searchCard">
+                    <div class="card mb-6">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-auto card-content">
+                                    <h2 class="card-title">Your Searched Quizzes go here</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
