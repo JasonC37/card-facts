@@ -84,6 +84,12 @@ function fetchList(search) {
 document.querySelector("button").addEventListener("click", e => {
   e.preventDefault();
   fetchList(document.querySelector("#searchQuery").value);
+  /*let resultMsg = document.querySelector("#gameMessage");
+  if(resultBox.isEmpty) {
+    resultMsg.textContent = "We found something for you!";
+  } else {
+    resultMsg.textContent = "No Results Found";
+  }*/
 });
 
 function toggleSpinner() {
